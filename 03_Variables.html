@@ -31,37 +31,50 @@
         let     --> Tipo de variable simple, puede cambiar su valor a lo largo de la ejecucion del programa pero necesita ser definida primero, posee blockScope
         const   --> Tipo de variable fija, no puede cambiar su valor a lo largo de la ejecucion del programa, necesita poseer un valor a la hora de ser declarada.
         */
+        /* 
+                // NOTE Ejemplos BlockScope //
+                var cadena = "Hola";
+                console.log(cadena); //Mostrará el valor Hola
 
-        // NOTE Ejemplos BlockScope //
-        var cadena = "Hola";
-        console.log(cadena); //Mostrará el valor Hola
+                { //Bloque
+                    var cadena = "Paco";
+                    console.log(cadena); //Mostrará el valor Paco
+                }
 
-        { //Bloque
-            var cadena = "Paco";
-            console.log(cadena); //Mostrará el valor Paco
-        }
+                console.log(cadena); //Mostrará el valor Paco ya que var no posee blockScope y se modifica el valor
 
-        console.log(cadena); //Mostrará el valor Paco ya que var no posee blockScope y se modifica el valor
+                //-----------------------------------------------------------------------------------------------------//
 
-        //-----------------------------------------------------------------------------------------------------//
+                let cadena = "Hola";
+                console.log(cadena); //Mostrará el valor Hola
 
-        let cadena = "Hola";
-        console.log(cadena); //Mostrará el valor Hola
+                { //Bloque, Let trata el bloque como otro scope diferente por tanto paco es variable local y no global
+                    let cadena = "Paco";
+                    console.log(cadena); //Mostrará el valor Paco
+                }
 
-        { //Bloque, Let trata el bloque como otro scope diferente por tanto paco es variable local y no global
-            let cadena = "Paco";
-            console.log(cadena); //Mostrará el valor Paco
-        }
-
-        console.log(cadena); //Mostrará el valor Hola ya que let posee blockScope y no se modifica el valor
-
+                console.log(cadena); //Mostrará el valor Hola ya que let posee blockScope y no se modifica el valor
+         */
         //mapeado de variables//
 
         var variable1, variable2, rest;
         [variable1, variable2] = [1, "new"]; //Asignamos a cada variable su valor correspondiente segun la posicion.
 
+        ({
+            variable1,
+            variable2
+        } = {
+            variable1: 1,
+            variable2: "new"
+        }); //Otra manera
+
         [variable1, variable2, ...rest] = [2, "old", "un", "nuevo", "array", "para",
-        "rest"]; //Asignamos los dos primeros valores a las dos primeras variables, y el resto a un rest, como array.
+            "rest"
+        ]; //Asignamos los dos primeros valores a las dos primeras variables, y el resto a un rest, como array.
+
+        console.log(variable1);
+        console.log(variable2);
+        console.log(rest);
     </script>
 
 
