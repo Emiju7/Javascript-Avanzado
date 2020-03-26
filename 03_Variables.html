@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" >
+<html lang="es">
 
 <head>
     <!--SECTION Aclaraciones sobre etiquetas HEAD -->
@@ -25,7 +25,6 @@
 <body>
 
     <script>
-
         /* NOTE Tipos de variables */
         /*
         var     --> Tipo de variable simple, puede cambiar su valor a lo largo de la ejecucion del programa, no posee blockScope
@@ -56,6 +55,13 @@
 
         console.log(cadena); //Mostrará el valor Hola ya que let posee blockScope y no se modifica el valor
 
+        //mapeado de variables//
+
+        var variable1, variable2, rest;
+        [variable1, variable2] = [1, "new"]; //Asignamos a cada variable su valor correspondiente segun la posicion.
+
+        [variable1, variable2, ...rest] = [2, "old", "un", "nuevo", "array", "para",
+        "rest"]; //Asignamos los dos primeros valores a las dos primeras variables, y el resto a un rest, como array.
     </script>
 
 
