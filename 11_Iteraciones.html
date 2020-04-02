@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--SECTION Aclaraciones sobre etiquetas HEAD -->
+    <meta name="author" content="Emilio Luis Pareja Hinojosa">
+    <!--Define quien es el autor de la pagina-->
+    <meta charset="UTF-8">
+    <!--Se encarga de proporcionar el codigo de caracteres a seguir-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Permite que la pagina se escale automaticamente aunque no sea responsive independientemente del dispositivo-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Permite que la pagina se vea bien en versiones antiguas de edge-->
+    <meta name="keywords" content="clave">
+    <!--Define las palabras clave que utilizara el navegador para encontrar la pagina-->
+    <meta name="description" content="Pagina Web de ejemplo">
+    <!--Proporciona una descripcion a la pagina que ayuda al navegador a encontrarla-->
+    <!--<meta http-equiv="refresh" content="3">-->
+    <!--Permite refrescar la pagina cada 3 segundos-->
+    <!--<link rel="stylesheet" href="rutaCSS">-->
+    <title>03 Variables</title>
+    <!--!SECTION -->
+</head>
+
+<body>
+
+    <script>
+        //TIPOS DE ITERACIONES//
+        /*
+        -Bucles:
+            -for
+            -forEach -->Metodo nativo de los arrays, permite iterar sobre cada uno de los elementos de una estructura de datos.
+            -for..of -->Se utiliza para iterar sobre iterables, aunque se puede utilizar para estructuras de datos.
+            -for..in -->Se utiliza principalmente para objetos.
+            -While / do while
+        -Map / Reduce / Filter / fill / repeat -->Metodos expuestos para estructuras de datos, principalmente se usa en la programacion funcional y no crean efectos secundarios
+        -Interpolacion de valores (ES6)
+        */
+
+        //BUCLES//
+        var list = [1, 2, 3, 4, 5, 6];
+        var objeto = {
+            nombre: "Carmele",
+            apellido: "Carmesí",
+            DNI: "76591994Q"
+        };
+
+        console.log("---------FOR---------");
+        for (let i = 0; i < list.length; i++) {
+            console.log(list[i]);
+        }
+
+        console.log("---------FOR EACH---------");
+        list.forEach(element => {
+            console.log(element);
+        });
+
+        console.log("---------FOR OF---------");
+        for (const iterator of list) {
+            console.log(iterator);
+        }
+
+        console.log("---------FOR IN---------");
+        for (const key in objeto) {
+            if (objeto.hasOwnProperty(key)) {
+                const element = objeto[key];
+                console.log(element);
+            }
+        }
+
+        //Tambien nos permite recorrer un array
+        list.map((el) => console.log(el))
+
+        //Filtra todos los valores que son pares y los muestra en un array
+        console.log(list.filter(function (el) {
+            return (el % 2 == 0);
+        }))
+
+        //Hace lo mismo que lo anterior pero con una funcion global
+        function pares(el) {
+            return (el % 2 == 0);
+        }
+        console.log(list.filter(pares));
+
+        //pasandole true, realizamos la parte de pares, pasandole false, la parte de impares
+        function oddOrEven(odd) {
+            return odd
+                //Deseamos los valores pares
+                //Esta es la funcion que cojera el filter, y el es el elemento a evaluar la condicion de filtrado
+                ?
+                function (el) {
+                    //añadimos el valor al array de filtrados si cumple la condicion
+                    return (el % 2) == 0;
+                }
+
+                //Deseamos los valores impares
+                //Esta es la funcion que cojera el filter, y el es el elemento a evaluar la condicion de filtrado
+                :
+                function (el) {
+                    //añadimos el valor al array de filtrados si cumple la condicion
+                    return (el % 2) != 0;
+                }
+
+        }
+
+        //Devuelve un array con los numeros pares de la lista
+        console.log(list.filter(oddOrEven(true)));
+
+        //Devuelve un array con los numeros impares de la lista
+        console.log(list.filter(oddOrEven(false)));
+    </script>
+
+
+</body>
+
+</html>
