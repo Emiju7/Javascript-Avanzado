@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--SECTION Aclaraciones sobre etiquetas HEAD -->
+    <meta name="author" content="Emilio Luis Pareja Hinojosa">
+    <!--Define quien es el autor de la pagina-->
+    <meta charset="UTF-8">
+    <!--Se encarga de proporcionar el codigo de caracteres a seguir-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Permite que la pagina se escale automaticamente aunque no sea responsive independientemente del dispositivo-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Permite que la pagina se vea bien en versiones antiguas de edge-->
+    <meta name="keywords" content="clave">
+    <!--Define las palabras clave que utilizara el navegador para encontrar la pagina-->
+    <meta name="description" content="Pagina Web de ejemplo">
+    <!--Proporciona una descripcion a la pagina que ayuda al navegador a encontrarla-->
+    <!--<meta http-equiv="refresh" content="3">-->
+    <!--Permite refrescar la pagina cada 3 segundos-->
+    <!--<link rel="stylesheet" href="rutaCSS">-->
+    <title>03 Variables</title>
+    <!--!SECTION -->
+</head>
+
+<body>
+
+    <script>
+        //Una manera de declarar herencias entre objetos
+        let pokemon = {
+            eats: true,
+            drinks() {
+                console.log("Glub Glub...")
+            }
+        };
+
+        let charmander = {
+            fire: true,
+            power: 20,
+            __proto__: pokemon
+        };
+
+        let charmeleon = {
+            earLenght: 10,
+            power: 100,
+            __proto__: charmander
+        }
+
+        console.log(charmander);
+        console.log(charmeleon);
+
+
+        //Herencia entre objetos con extends
+        class Pokimon {
+            constructor(name, power, routes) {
+                this.name = name;
+                this.power = power;
+                this.routes = routes;
+
+            }
+
+            presentPokemon() {
+                console.log("El nombre de este pokemon es ", this.name, " su poder base es de ", this.power,
+                    " las rutas donde aparece son: \n", this.routes);
+            }
+        }
+
+        class Fire_Pokimon extends Pokimon {
+            constructor(name, power, routes, atacks) {
+                super(name, power, routes);
+                this.type = "fire";
+                this.atacks = atacks;
+            }
+
+            presentPokemon() {
+                console.log("El nombre de este pokemon es ", this.name, " su atributo es ", this.type,
+                    " su poder base es de ", this.power, " las rutas donde aparece son: \n", this.routes,
+                    "\ny sus ataques son: \n", this.atacks);
+            }
+        }
+
+        let newCharmander = new Fire_Pokimon("Charmander", 40, "1, 2, 6, 11",
+            "Colmillo igneo, Mordisco, Ascuas, Pantalla humo");
+        newCharmander.presentPokemon();
+    </script>
+
+
+</body>
+
+</html>

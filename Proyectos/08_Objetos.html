@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--SECTION Aclaraciones sobre etiquetas HEAD -->
+    <meta name="author" content="Emilio Luis Pareja Hinojosa">
+    <!--Define quien es el autor de la pagina-->
+    <meta charset="UTF-8">
+    <!--Se encarga de proporcionar el codigo de caracteres a seguir-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Permite que la pagina se escale automaticamente aunque no sea responsive independientemente del dispositivo-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Permite que la pagina se vea bien en versiones antiguas de edge-->
+    <meta name="keywords" content="clave">
+    <!--Define las palabras clave que utilizara el navegador para encontrar la pagina-->
+    <meta name="description" content="Pagina Web de ejemplo">
+    <!--Proporciona una descripcion a la pagina que ayuda al navegador a encontrarla-->
+    <!--<meta http-equiv="refresh" content="3">-->
+    <!--Permite refrescar la pagina cada 3 segundos-->
+    <!--<link rel="stylesheet" href="rutaCSS">-->
+    <title>08 Objetos</title>
+    <!--!SECTION -->
+</head>
+
+<body>
+
+    <script>
+        //Creacion de un objeto basico
+        casa = {
+            habitaciones: 3,
+            garaje: true
+        };
+
+        console.log(casa);
+
+        //Nos devuelve si existe el atributo piscina
+        casa.hasOwnProperty('piscina');
+
+        //Nos devuelve los atributos que contiene el objeto
+        console.log(Object.keys(casa));
+
+
+        //Creaccion de un objeto con el patron factoria
+        function createActor(name, speed, strenght) {
+            var obj = new Object();
+            obj.name = name;
+            obj.speed = speed;
+            obj.strenght = strenght;
+            obj.salute = function () {
+                console.log(this.name);
+            };
+
+            return obj;
+        }
+
+        var actorAdolfo = createActor("Adolfo", 40, "magic");
+        actorAdolfo.salute();
+        console.log(actorAdolfo.name, actorAdolfo.speed, actorAdolfo.strenght);
+        
+
+        //Creacion de un objeto con el patron constructor
+        function Actor(name, speed, strenght){
+            this.name = name;
+            this.speed = speed;
+            this.strenght = strenght;
+            this.sayName = function(){
+                alert(this.name);
+            }
+        }
+
+        var mensajeitor = new Actor("Mensajeitor", 99, "Communications");
+        mensajeitor.sayName();
+        console.log(mensajeitor);
+
+
+        //Creacion de un objeto con el uso de class
+        class ActorJuego{
+            constructor(nombre, velocidad, atributo) {
+                this.nombre = nombre;
+                this.velocidad = velocidad;
+                this.atributo = atributo;
+            }
+            presentarActor(){
+                console.log("Hola soy " ,this.nombre, " mi velocidad es de ", this.velocidad, " puntos y mi atributo es ", this.atributo);
+            }
+        }
+
+        var actor_Domimatrix = new ActorJuego("Domimatrix", 88, "Guerra");
+        actor_Domimatrix.presentarActor();
+
+        
+
+    </script>
+
+
+</body>
+
+</html>
